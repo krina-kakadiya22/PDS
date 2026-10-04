@@ -1,0 +1,214 @@
+import mysql.connector
+
+# Connect to MySQL
+
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password"
+)
+
+print("MySQL connected successfully.")
+
+con.close()
+import mysql.connector
+
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password"
+)
+
+cursor = con.cursor()
+
+cursor.execute("CREATE DATABASE IF NOT EXISTS college")
+
+print("Database created successfully.")
+
+cursor.close()
+con.close()
+import mysql.connector
+
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="college"
+)
+
+cursor = con.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    marks INT
+)
+""")
+
+print("Table created successfully.")
+
+cursor.close()
+con.close()
+import mysql.connector
+
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="college"
+)
+
+cursor = con.cursor()
+
+sql = "INSERT INTO students (id, name, marks) VALUES (%s, %s, %s)"
+
+data = (1, "Krina", 85)
+
+cursor.execute(sql, data)
+
+con.commit()
+
+print("Record inserted successfully.")
+
+cursor.close()
+con.close()
+import mysql.connector
+
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="college"
+)
+
+cursor = con.cursor()
+
+sql = "INSERT INTO students (id, name, marks) VALUES (%s, %s, %s)"
+
+data = [
+    (2, "Riya", 90),
+    (3, "Priya", 78),
+    (4, "Neha", 88)
+]
+
+cursor.executemany(sql, data)
+
+con.commit()
+
+print("Records inserted successfully.")
+
+cursor.close()
+con.close()
+import mysql.connector
+
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="college"
+)
+
+cursor = con.cursor()
+
+cursor.execute("SELECT * FROM students")
+
+records = cursor.fetchall()
+
+for row in records:
+    print(row)
+
+cursor.close()
+con.close()
+import mysql.connector
+
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="college"
+)
+
+cursor = con.cursor()
+
+sql = "UPDATE students SET marks = %s WHERE id = %s"
+
+data = (95, 1)
+
+cursor.execute(sql, data)
+
+con.commit()
+
+print("Record updated successfully.")
+
+cursor.close()
+con.close()
+import mysql.connector
+
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="college"
+)
+
+cursor = con.cursor()
+
+sql = "DELETE FROM students WHERE id = %s"
+
+data = (4,)
+
+cursor.execute(sql, data)
+
+con.commit()
+
+print("Record deleted successfully.")
+
+cursor.close()
+con.close()
+
+import mysql.connector
+
+# Connect to MySQL
+con = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="college"
+)
+
+cursor = con.cursor()
+
+# CREATE
+cursor.execute(
+    "INSERT INTO students (id, name, marks) VALUES (%s, %s, %s)",
+    (5, "Asha", 82)
+)
+con.commit()
+print("1. Record created")
+
+# READ
+cursor.execute("SELECT * FROM students")
+
+print("\n2. Student Records:")
+for row in cursor.fetchall():
+    print(row)
+
+# UPDATE
+cursor.execute(
+    "UPDATE students SET marks=%s WHERE id=%s",
+    (92, 5)
+)
+con.commit()
+print("\n3. Record updated")
+
+# DELETE
+cursor.execute(
+    "DELETE FROM students WHERE id=%s",
+    (5,)
+)
+con.commit()
+print("4. Record deleted")
+
+cursor.close()
+con.close()
