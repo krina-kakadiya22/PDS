@@ -1,0 +1,46 @@
+# Function without argument
+
+def greet():
+    print("Hello, Python!")
+
+greet()
+# Function with arguments
+
+def add(a, b):
+    print("Addition:", a + b)
+
+add(10, 20)
+# Default argument
+
+def greet(name="Student"):
+    print("Hello", name)
+
+greet()
+greet("Krina")
+# Keyword arguments
+
+def student(name, age):
+    print("Name:", name)
+    print("Age:", age)
+
+student(age=20, name="Krina")
+# Variable length arguments
+
+def add(*numbers):
+    total = 0
+
+    for n in numbers:
+        total += n
+
+    print("Total:", total)
+
+add(10, 20)
+add(10, 20, 30, 40)
+# Function with return value
+
+def square(number):
+    return number * number
+
+result = square(5)
+
+print("Square:", result)
