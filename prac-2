@@ -1,0 +1,77 @@
+# List
+
+fruits = ["apple", "banana", "mango"]
+
+print("Original List:", fruits)
+
+fruits.append("orange")
+print("After append:", fruits)
+
+fruits.insert(1, "grapes")
+print("After insert:", fruits)
+
+fruits.remove("banana")
+print("After remove:", fruits)
+
+fruits.sort()
+print("After sort:", fruits)
+
+print("Length:", len(fruits))
+
+# Tuple
+
+numbers = (10, 20, 30, 20, 40)
+
+print("Tuple:", numbers)
+print("Count of 20:", numbers.count(20))
+print("Position of 30:", numbers.index(30))
+print("Length:", len(numbers))
+
+# Set
+
+numbers = {10, 20, 30}
+
+print("Original Set:", numbers)
+
+numbers.add(40)
+print("After add:", numbers)
+
+numbers.remove(20)
+print("After remove:", numbers)
+
+numbers.update([50, 60])
+print("After update:", numbers)
+
+# Dictionary
+
+student = {
+    "name": "Krina",
+    "age": 20,
+    "course": "Engineering"
+}
+
+print("Dictionary:", student)
+
+print("Name:", student["name"])
+
+student["age"] = 21
+print("After update:", student)
+
+student["city"] = "Ahmedabad"
+print("After adding city:", student)
+
+print("Keys:", student.keys())
+print("Values:", student.values())
+print("Items:", student.items())
+
+# String
+
+text = "hello python"
+
+print("Original:", text)
+print("Uppercase:", text.upper())
+print("Lowercase:", text.lower())
+print("Capitalized:", text.capitalize())
+print("Replace:", text.replace("python", "world"))
+print("Length:", len(text))
+print("Split:", text.split())
