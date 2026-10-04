@@ -44,3 +44,31 @@ def square(number):
 result = square(5)
 
 print("Square:", result)
+# Math module
+
+import math
+
+number = 25
+
+print("Square root:", math.sqrt(number))
+print("Power:", math.pow(2, 3))
+print("Factorial:", math.factorial(5))
+print("Value of PI:", math.pi)
+# Random module
+
+import random
+
+print("Random number:", random.randint(1, 100))
+
+fruits = ["Apple", "Banana", "Mango", "Orange"]
+
+print("Random fruit:", random.choice(fruits))
+# Statistics module
+
+import statistics
+
+numbers = [10, 20, 30, 40, 50]
+
+print("Mean:", statistics.mean(numbers))
+print("Median:", statistics.median(numbers))
+print("Mode:", statistics.mode(numbers))
