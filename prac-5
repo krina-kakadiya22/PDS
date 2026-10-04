@@ -1,0 +1,103 @@
+# Write data to a text file
+
+file = open("student.txt", "w")
+
+file.write("Name: Krina\n")
+file.write("Course: Computer Engineering\n")
+file.write("Age: 20\n")
+
+file.close()
+
+print("Data written successfully.")
+# Read data from a text file
+
+file = open("student.txt", "r")
+
+data = file.read()
+
+print(data)
+
+file.close()
+# Append data to a text file
+
+file = open("student.txt", "a")
+
+file.write("City: Ahmedabad\n")
+
+file.close()
+
+print("Data appended successfully.")
+# Read file using with statement
+
+with open("student.txt", "r") as file:
+    data = file.read()
+
+print(data)
+import csv
+
+# Write data to CSV file
+
+with open("students.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+
+    writer.writerow(["ID", "Name", "Marks"])
+    writer.writerow([1, "Krina", 85])
+    writer.writerow([2, "Riya", 90])
+    writer.writerow([3, "Priya", 78])
+
+print("CSV file created successfully.")
+import csv
+
+# Read CSV file
+
+with open("students.csv", "r") as file:
+    reader = csv.reader(file)
+
+    for row in reader:
+        print(row)
+import csv
+
+# Append data to CSV file
+
+with open("students.csv", "a", newline="") as file:
+    writer = csv.writer(file)
+
+    writer.writerow([4, "Neha", 88])
+
+print("Data appended to CSV file.")
+import pickle
+
+# Write data to binary file
+
+student = {
+    "name": "Krina",
+    "age": 20,
+    "marks": 85
+}
+
+with open("student.dat", "wb") as file:
+    pickle.dump(student, file)
+
+print("Data written to binary file.")
+import pickle
+
+# Read data from binary file
+
+with open("student.dat", "rb") as file:
+    student = pickle.load(file)
+
+print(student)
+import pickle
+
+# Append data to binary file
+
+student = {
+    "name": "Riya",
+    "age": 21,
+    "marks": 90
+}
+
+with open("student.dat", "ab") as file:
+    pickle.dump(student, file)
+
+print("Data appended successfully.")
