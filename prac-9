@@ -1,0 +1,130 @@
+import pandas as pd
+
+data = {
+    "Student": ["A", "B", "C", "D", "E", "F", "G", "H"],
+    "Study_Hours": [2, 4, 5, 3, 6, 7, 1, 8],
+    "Attendance": [70, 80, 85, 75, 90, 95, 60, 98],
+    "Marks": [55, 65, 72, 60, 80, 88, 45, 92]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+print("First 5 records:")
+print(df.head())
+
+print("\nDataset Information:")
+print(df.info())
+
+print("\nStatistical Summary:")
+print(df.describe())
+import matplotlib.pyplot as plt
+
+df["Marks"].plot(kind="hist")
+
+plt.title("Distribution of Student Marks")
+plt.xlabel("Marks")
+plt.ylabel("Number of Students")
+
+plt.show()
+import matplotlib.pyplot as plt
+
+plt.scatter(df["Study_Hours"], df["Marks"])
+
+plt.title("Study Hours vs Marks")
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+
+plt.show()
+import matplotlib.pyplot as plt
+
+plt.scatter(df["Attendance"], df["Marks"])
+
+plt.title("Attendance vs Marks")
+plt.xlabel("Attendance (%)")
+plt.ylabel("Marks")
+
+plt.show()
+import matplotlib.pyplot as plt
+
+plt.scatter(
+    df["Study_Hours"],
+    df["Marks"],
+    s=df["Attendance"] * 5
+)
+
+plt.title("Study Hours, Attendance and Marks")
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+
+plt.show()
+import matplotlib.pyplot as plt
+
+correlation = df[["Study_Hours", "Attendance", "Marks"]].corr()
+
+print(correlation)
+
+plt.imshow(correlation)
+plt.colorbar()
+
+plt.xticks(range(3), ["Study Hours", "Attendance", "Marks"])
+plt.yticks(range(3), ["Study Hours", "Attendance", "Marks"])
+
+plt.title("Correlation Matrix")
+plt.show()
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Step 1: Data Collection
+data = {
+    "Student": ["A", "B", "C", "D", "E", "F", "G", "H"],
+    "Study_Hours": [2, 4, 5, 3, 6, 7, 1, 8],
+    "Attendance": [70, 80, 85, 75, 90, 95, 60, 98],
+    "Marks": [55, 65, 72, 60, 80, 88, 45, 92]
+}
+
+df = pd.DataFrame(data)
+
+# Step 2: Data Understanding
+print("Dataset:")
+print(df)
+
+# Step 3: Data Cleaning
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# Step 4: Univariate Analysis
+print("\nAverage Marks:", df["Marks"].mean())
+
+df["Marks"].plot(kind="hist")
+plt.title("Marks Distribution")
+plt.xlabel("Marks")
+plt.ylabel("Students")
+plt.show()
+
+# Step 5: Bivariate Analysis
+plt.scatter(df["Study_Hours"], df["Marks"])
+plt.title("Study Hours vs Marks")
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+plt.show()
+
+# Step 6: Multivariate Analysis
+print("\nCorrelation Matrix:")
+print(df[["Study_Hours", "Attendance", "Marks"]].corr())
+
+plt.scatter(
+    df["Study_Hours"],
+    df["Marks"],
+    s=df["Attendance"] * 5
+)
+
+plt.title("Study Hours, Attendance and Marks")
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+plt.show()
+
+# Step 7: Conclusion
+print("\nConclusion:")
+print("Study hours and attendance have a positive relationship with marks.")
