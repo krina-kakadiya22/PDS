@@ -1,0 +1,62 @@
+import matplotlib.pyplot as plt
+
+# Data
+months = ["Jan", "Feb", "Mar", "Apr", "May"]
+sales = [20, 35, 30, 45, 50]
+
+subjects = ["Python", "DBMS", "CN", "Java", "Maths"]
+marks = [85, 75, 80, 70, 90]
+
+marks_data = [45, 55, 60, 65, 70, 72, 75, 78, 80, 82, 85, 88, 90, 92]
+
+expenses = [30, 25, 20, 15, 10]
+expense_labels = ["Food", "Travel", "Books", "Mobile", "Other"]
+
+study_hours = [1, 2, 3, 4, 5]
+test_marks = [45, 50, 60, 70, 85]
+
+
+# Create figure
+plt.figure(figsize=(12, 8))
+
+# 1. Line Plot
+plt.subplot(2, 3, 1)
+plt.plot(months, sales, marker="o")
+plt.title("Line Plot")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.grid(True)
+
+# 2. Bar Chart
+plt.subplot(2, 3, 2)
+plt.bar(subjects, marks)
+plt.title("Bar Chart")
+plt.xlabel("Subjects")
+plt.ylabel("Marks")
+plt.xticks(rotation=45)
+
+# 3. Histogram
+plt.subplot(2, 3, 3)
+plt.hist(marks_data, bins=5)
+plt.title("Histogram")
+plt.xlabel("Marks")
+plt.ylabel("Frequency")
+
+# 4. Pie Chart
+plt.subplot(2, 3, 4)
+plt.pie(expenses, labels=expense_labels, autopct="%1.1f%%")
+plt.title("Pie Chart")
+
+# 5. Scatter Plot
+plt.subplot(2, 3, 5)
+plt.scatter(study_hours, test_marks)
+plt.title("Scatter Plot")
+plt.xlabel("Study Hours")
+plt.ylabel("Test Marks")
+
+# Figure properties
+plt.suptitle("Different Types of Matplotlib Plots", fontsize=16)
+plt.tight_layout()
+
+# Display all plots
+plt.show()
