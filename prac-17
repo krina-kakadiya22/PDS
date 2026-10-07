@@ -1,0 +1,11 @@
+from scipy import statsdata = list(map(float, input("Enter data values separated by space: ").split()))
+population_mean = float(input("Enter hypothesized mean: "))
+alpha = 0.05
+t_value, p_value = stats.ttest_1samp(data, population_mean)
+print("\nT-value:", round(t_value, 4))
+print("P-value:", round(p_value, 4))if p_value < alpha:
+    print("Reject the null hypothesis")
+    print("There is a significant difference.")
+else:
+    print("Fail to reject the null hypothesis")
+    print("There is no significant difference.")
