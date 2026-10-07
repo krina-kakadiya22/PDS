@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import binom, poisson
+     
+# Binomial Distribution
+n = 15
+p = 0.9
+
+x = np.arange(0, 16)
+y = binom.pmf(x, n, p)
+
+plt.bar(x, y)
+plt.title("Binomial Distribution")
+plt.xlabel("Number of successes")
+plt.ylabel("Probability")
+plt.show()lam = 6
+
+x = np.arange(0, 16)
+y = poisson.pmf(x, lam)
+
+plt.bar(x, y)
+plt.title("Poisson Distribution")
+plt.xlabel("Number of events")
+plt.ylabel("Probability")
+plt.show()
+     15
