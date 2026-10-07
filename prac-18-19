@@ -1,0 +1,59 @@
+from google.colab import files
+
+uploaded = files.upload()import pandas as pd
+import numpy as np
+
+columns = ["age", "workclass", "fnlwgt", "education", "education_num",
+           "marital_status", "occupation", "relationship", "race", "sex",
+           "capital_gain", "capital_loss", "hours_per_week",
+           "native_country", "income"]
+
+df = pd.read_csv("adult.data", names=columns, skipinitialspace=True,
+                 na_values="?")
+
+print(df.head())print("\nMissing Values:")
+print(df.isnull().sum())
+for col in ["workclass", "occupation", "native_country"]:
+    df[col] = df[col].fillna(df[col].mode()[0])
+
+print("\nMissing Values After Handling:")
+print(df.isnull().sum())print("\nDuplicate Records:", df.duplicated().sum())
+df = df.drop_duplicates()
+
+print("Duplicate Records After Removal:", df.duplicated().sum())Q1 = df["hours_per_week"].quantile(0.25)
+Q3 = df["hours_per_week"].quantile(0.75)
+
+IQR = Q3 - Q1
+
+lower = Q1 - 1.5 * IQR
+upper = Q3 + 1.5 * IQR
+
+outliers = df[(df["hours_per_week"] < lower) |
+              (df["hours_per_week"] > upper)]
+
+print("\nNumber of Outliers:", len(outliers))df["hours_per_week"] = df["hours_per_week"].clip(lower, upper)
+
+print("\nOutliers Treated Successfully.")
+print(df["hours_per_week"].describe())
+     print(df.iloc[0:5, 0:5])
+    f iltered = df[df["age"] > 40]
+
+print(filtered[["age", "education", "income"]].head())sorted_df = df.sort_values(by="age", ascending=False)
+
+print(sorted_df[["age", "education", "income"]].head())df1 = df.iloc[:2]
+df2 = df.iloc[2:5]
+
+combined = pd.concat([df1, df2])
+
+print(combined)print("Average Age:", df["age"].mean())
+print("Average Hours:", df["hours_per_week"].mean())
+print("Maximum Age:", df["age"].max())
+print("Minimum Age:", df["age"].min())#group aggregation
+print(df.groupby("income")["age"].mean())df["hours_normalized"] = (
+    df["hours_per_week"] - df["hours_per_week"].min()
+) / (
+    df["hours_per_week"].max() -
+    df["hours_per_week"].min()
+)
+
+print(df[["hours_per_week", "hours_normalized"]].head())      18 and 19 mix che
