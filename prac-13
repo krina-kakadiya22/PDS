@@ -1,0 +1,41 @@
+!pip install requests beautifulsoup4import requests
+from bs4 import BeautifulSoup
+# Define target search URL and browser-like headers
+search_query = "laptops"
+page_no=1
+data=True
+while True:
+  url = f"https://www.flipkart.com/search?q={search_query}&page={page_no} "
+  print(url)
+  headers = {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36",
+      "Accept-Language": "en-US,en;q=0.9"
+  }
+  # Send HTTP GET request
+  response = requests.get(url, headers=headers)
+  if response.status_code == 200:
+      # Parse HTML content
+      soup = BeautifulSoup(response.text, "html.parser")
+      # Locate product container cards (Flipkart frequently updates these class names)
+      # Target container wrapper classes for search entries
+      products = soup.find_all("div", {"class": "ZFwe0M row"})
+  #         print(f"Found {len(products)} items. Extracting details...\n")
+      if not products:
+          print("No products found on the page.")
+          break
+      for item in products:
+          # Extract product title (handling varying tag structures safely)
+          name_elem = item.find("div", {"class": "RG5Slk"}) # Scapped Product Name
+          price_elem = item.find("div", {"class": "hZ3P6w DeU9vF"}) # Scapped Product Name
+          discount_elem = item.find("div", {"class": "HQe8jr"})
+#         print(discount_elem)
+          if name_elem and discount_elem:
+              print(f"Product: {name_elem.get_text(strip=True)}")
+              print(f"Price:   {price_elem.get_text(strip=True)}")
+              print(f"Discount:  {discount_elem.get_text(strip=True)}")
+              print("-" * 40)
+      print("Page no:",page_no)else:
+      print(f"Failed to fetch page. Status code: {response.status_code}")
+  page_no+=1
